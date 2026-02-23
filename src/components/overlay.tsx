@@ -37,7 +37,7 @@ function Overlay(props: Props) {
 
     return (
         // <div className='absolute z-10 top-1/2 left-1/2 translate-x-1/2 translate-y-1/2 w-auto h-auto'>
-        <div className='absolute z-10 top-12.5 left-12.5 w-auto h-auto'>
+        <div className='absolute z-10 top-5 right-5 w-auto h-auto'>
             <div className='bg-[#2f3e46] text-white w-full max-w-70 h-auto min-h-40 rounded-2xl p-3 text-[13px]'>
                 <div className='w-full flex justify-between items-center py-3  '>
                     <p className='mx-au font-bold'>Control Panel</p>
@@ -82,8 +82,8 @@ function Overlay(props: Props) {
 
                 <div onClick={()=>{setWireframe(!wireframe)}} className='flex justify-between items-center py-2'>
                     <p>Enable Wireframe</p>
-                    <div className='w-6 h-6 rounded-2 bg-[#84a98c] rounded-xl flex justify-center items-center'>
-
+                    <div className='w-6 h-6 bg-white rounded-md flex justify-center items-center'>
+                        <img src={"check.png"} alt="" className={`w-4 h-auto ${wireframe?"opacity-100":"opacity-0"}`}/>
                     </div>
                 </div>
             </div>

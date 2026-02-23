@@ -72,7 +72,7 @@ export function getMesh({which, wireframe}: {which?:string, wireframe?: boolean}
             return meshes[i].mesh({wireframe})
         }
     }
-    return meshes[0].mesh()
+    return meshes[0].mesh({wireframe})
 }
 
 export function delayer(props: {working:any, timeout:any, time:number, func:any}){

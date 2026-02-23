@@ -18,6 +18,7 @@ function MainComp(props: Props) {
     const [pointLt, setPointLt] = useState(100)
     const [reload, setReload] = useState(1)
     const [wireframe, setWireframe] = useState(false)
+    const [menu, setMenu] = useState(false)
 
     function increase_light(){
         setIntensity((prev)=>{
@@ -67,20 +68,24 @@ function MainComp(props: Props) {
                 {/* <a onClick={increase_light} href="/" className='font-bold no-underline'>Spapes</a> */}
                 <p onClick={increase_light} className='font-bold no-underline'>Objects</p>
                 <ul className='flex gap-3 list-none'>
-                    <li onClick={()=>{switch_object("Sphere")}}>Sphere</li>
-                    <li onClick={()=>{switch_object("TorusKnot")}}>T_K</li>
-                    <li onClick={()=>{switch_object("Torus")}}>Torus</li>
+                    {/* <li onClick={()=>{switch_object("Sphere")}}>Sphere</li> */}
+                    {/* <li onClick={()=>{switch_object("TorusKnot")}}>T_K</li> */}
+                    <li onClick={()=>{setMenu(!menu)}}>Menu</li>
                 </ul>
             </nav>
             <h1 className='absolute left-1/2 top-4/5 z-2 -translate-x-1/2 -translate-y-4/5 text-[20px]'>Give it a spin</h1>
-            <Overlay 
-                changer={switch_object} 
-                setIntensity={setIntensity} 
-                setPointLt={setPointLt}
-                wireframe={wireframe}
-                setWireframe={setWireframe}
-                which={which}
-            />
+            {
+                menu?
+                <Overlay 
+                    changer={switch_object} 
+                    setIntensity={setIntensity} 
+                    setPointLt={setPointLt}
+                    wireframe={wireframe}
+                    setWireframe={setWireframe}
+                    which={which}
+                />:
+                null
+            }
         </div>
     )
 }
