@@ -35,6 +35,7 @@ export function initializer({canvas, which, intensity, pointLt, wireframe}){
     const max_pixel_ratio = Math.min(devicePixelRatio, 2)
     renderer.setPixelRatio(max_pixel_ratio)
 
+    // const controls = new OrbitControls(camera, canvas)
     const controls = new OrbitControls(camera, canvas)
     controls.autoRotate = true
     controls.autoRotateSpeed = 3
