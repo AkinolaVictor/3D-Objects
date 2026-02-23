@@ -8,6 +8,7 @@ const emissiveIntensity = 1.5
 export const meshes = [
     {
         name: "Sphere",
+        image: "/sphere.jpg",
         mesh: ({wireframe}: {wireframe?:boolean})=>{
             const geometry = new THREE.SphereGeometry(3, 64, 64)
             const material = new THREE.MeshStandardMaterial({color,roughness, wireframe, 
@@ -18,6 +19,7 @@ export const meshes = [
     },
     {
         name: "TorusKnot",
+        image: "/torusknot.jpg",
         mesh: ({wireframe}: {wireframe?:boolean})=>{
             const geometry = new THREE.TorusKnotGeometry( 2, 0.8, 104, 12 );
             const material = new THREE.MeshStandardMaterial( { color, roughness, wireframe} );
@@ -26,6 +28,7 @@ export const meshes = [
     },
     {
         name: "Torus",
+        image: "/torus.jpg",
         mesh: ({wireframe}: {wireframe?:boolean})=>{
             const geometry = new THREE.TorusGeometry( 3, 1.2, 16, 100 );
             const material = new THREE.MeshStandardMaterial( { color, roughness, wireframe } );
@@ -34,6 +37,7 @@ export const meshes = [
     },
     {
         name: "Capsule",
+        image: "/favicon.ico",
         mesh: ({wireframe}: {wireframe?:boolean})=>{
             const geometry = new THREE.CapsuleGeometry( 3, 3, 40, 40, 20 );
             const material = new THREE.MeshStandardMaterial( { color, roughness, wireframe } );
@@ -44,6 +48,7 @@ export const meshes = [
 
     {
         name: "Octahedron",
+        image: "/octahedron.jpg",
         mesh: ({wireframe}: {wireframe?:boolean})=>{
             const geometry = new THREE.OctahedronGeometry(4);
             const material = new THREE.MeshStandardMaterial( { color, roughness, wireframe } );
@@ -52,6 +57,7 @@ export const meshes = [
     },
     {
         name: "Cone",
+        image: "/cone.jpg",
         mesh: ({wireframe}: {wireframe?:boolean})=>{
             const geometry = new THREE.ConeGeometry( 4, 7, 32 );
             const material = new THREE.MeshStandardMaterial( { color, roughness, wireframe } );

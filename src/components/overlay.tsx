@@ -47,13 +47,13 @@ function Overlay(props: Props) {
                 </div>
 
                 <p className='mb-2'>3D Objects</p>
-                
+
                 <div className='bg-[#354f52] text-white rounded-xl py-4 px-1 flex flex-wrap justify-around items-start'>
                     {
                         meshes.map((item, index)=>{
                             return (
                                 <div key={index} onClick={()=>{changer(item.name)}} className={`p-1.5 ${which===item.name?"bg-[#343a40]":""} rounded-[5px] flex flex-col justify-center items-center`}>
-                                    <img src="/brown.png" alt="" className='rounded-xl w-13 h-13 mb-3'/>
+                                    <img src={item.image} alt="" className='rounded-xl w-13 h-13 mb-3'/>
                                     <p>{item.name}</p>
                                 </div>
                             )
