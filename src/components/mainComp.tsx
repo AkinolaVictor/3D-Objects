@@ -54,27 +54,26 @@ function MainComp(props: Props) {
 
     useEffect(()=>{
         quick_reminder()
-        console.log({wireframe})
     }, [intensity, pointLt, wireframe, intensity, which])
 
     useEffect(()=>{
         return initializer({canvas: canvasElem.current, which, intensity, pointLt, wireframe})
-    }, [reload, intensity, pointLt, wireframe, intensity, which])
+    }, [reload, intensity, pointLt, wireframe, intensity, which,])
     
     return (
         <div className='w-screen h-screen text-white relative'>
             <canvas ref={canvasElem} className="webgl absolute top-0 left-0 z-1"></canvas>
             <nav className='text-white z-2 relative px-4 py-5 flex justify-between'>
                 {/* <a onClick={increase_light} href="/" className='font-bold no-underline'>Spapes</a> */}
-                <p onClick={increase_light} className='font-bold no-underline'>Objects</p>
-                <ul className='flex gap-3 list-none'>
-                    {/* <li onClick={()=>{switch_object("Sphere")}}>Sphere</li> */}
-                    {/* <li onClick={()=>{switch_object("TorusKnot")}}>T_K</li> */}
-                    <li onClick={()=>{setMenu(!menu)}}>Menu</li>
-                </ul>
+                <p onClick={increase_light} className='font-bold no-underline'>3D Objects</p>
+                <div onClick={()=>{setMenu(true)}} className='flex text-black cursor-pointer justify-center items-center bg-white rounded-[100px] w-10 h-10'>
+                    {/* <li>Menu</li> */}
+                    {/* <p>Cl</p> */}
+                    <img src="menu.png" alt="" className='w-6 h-auto'/>
+                </div>
             </nav>
             <h1 className='absolute left-1/2 top-4/5 z-2 -translate-x-1/2 -translate-y-4/5 text-[20px]'>Give it a spin</h1>
-            {
+            {/* {
                 menu?
                 <Overlay 
                     changer={switch_object} 
@@ -83,9 +82,21 @@ function MainComp(props: Props) {
                     wireframe={wireframe}
                     setWireframe={setWireframe}
                     which={which}
+                    setMenu={setMenu}
+                    menu={menu}
                 />:
                 null
-            }
+            } */}
+            <Overlay 
+                changer={switch_object} 
+                setIntensity={setIntensity} 
+                setPointLt={setPointLt}
+                wireframe={wireframe}
+                setWireframe={setWireframe}
+                which={which}
+                setMenu={setMenu}
+                menu={menu}
+            />
         </div>
     )
 }

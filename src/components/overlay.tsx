@@ -8,11 +8,13 @@ interface Props {
     setPointLt?: any,
     setWireframe?:any,
     wireframe?:any,
+    setMenu?:any,
     which:string,
+    menu?: boolean
 }
 
 function Overlay(props: Props) {
-    const {changer, setIntensity, setPointLt, which, setWireframe, wireframe} = props
+    const {changer, setIntensity, setPointLt, which, setWireframe, wireframe, setMenu, menu} = props
     const [values_1, setValues_1] = useState([10])
     const [values_2, setValues_2] = useState([100])
     const working = useRef(null)
@@ -37,12 +39,12 @@ function Overlay(props: Props) {
 
     return (
         // <div className='absolute z-10 top-1/2 left-1/2 translate-x-1/2 translate-y-1/2 w-auto h-auto'>
-        <div className='absolute z-10 top-5 right-5 w-auto h-auto'>
+        <div className={`absolute z-10 top-5 right-5 w-auto h-auto ${!menu?"block":"hidden"}`}>
             <div className='bg-[#2f3e46] text-white w-full max-w-70 h-auto min-h-40 rounded-2xl p-3 text-[13px]'>
                 <div className='w-full flex justify-between items-center py-3  '>
                     <p className='mx-au font-bold'>Control Panel</p>
-                    <div className='ml-auto'>
-                        <p>X</p>
+                    <div onClick={setMenu(false)} className='ml-auto w-7 h-7 cursor-pointer bg-white rounded-full flex justify-center items-center'>
+                        <img src="close.png" alt="" className='w-3 h-auto'/>
                     </div>
                 </div>
 
@@ -61,7 +63,7 @@ function Overlay(props: Props) {
                     }
                 </div>
 
-                <p className='mt-5 mb-2 '>Ambient Light Intensity ({values_1}%)</p>
+                <p className='mt-5 mb-2 '>Environment Light ({values_1}%)</p>
                 <div className='bg-[#354f52] rounded-xl py-5 px-3 mb-5'>
                     <SelectRange 
                         values={values_1}
@@ -69,7 +71,7 @@ function Overlay(props: Props) {
                     />
                 </div>
 
-                <p className='mt-5 mb-2 '>Pointed Light Intensity ({values_2})</p>
+                <p className='mt-5 mb-2 '>Pointed Light ({values_2})</p>
                 <div className='bg-[#354f52] rounded-xl py-5 px-3 mb-2'>
                     <SelectRange 
                         values={values_2}
