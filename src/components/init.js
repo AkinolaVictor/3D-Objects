@@ -11,7 +11,6 @@ export function initializer({canvas, which, intensity, pointLt, wireframe}){
     scene.add(mesh)
     // const light = new THREE.PointLight(0xffffff, 1, 100)
     // const light = new THREE.PointLight("white", 100)
-    // const light = new THREE.PointLight("0xffffff", pointLt)
     const light = new THREE.PointLight("0xffffff", pointLt)
     light.position.set(0, 10, 10)
     // light.intensity = 1.15
