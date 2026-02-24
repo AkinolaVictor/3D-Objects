@@ -58,7 +58,7 @@ function MainComp(props: Props) {
 
     useEffect(()=>{
         return initializer({canvas: canvasElem.current, which, intensity, pointLt, wireframe})
-    }, [reload, intensity, pointLt, wireframe, intensity, which,])
+    }, [reload, intensity, pointLt, wireframe, intensity, which])
     
     return (
         <div className='w-screen h-screen text-white relative'>

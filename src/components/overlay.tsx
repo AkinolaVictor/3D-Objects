@@ -37,13 +37,27 @@ function Overlay(props: Props) {
         })
     }, [values_1, values_2])
 
+    function control_overlay(){
+        const over = document.querySelector(".overlay_container")
+        if(menu){
+            over?.classList.remove("hidden")
+        } else {
+            over?.classList.add("hidden")
+        }
+    }
+
+    useEffect(()=>{
+        control_overlay()
+    }, [menu])
+
     return (
-        // <div className='absolute z-10 top-1/2 left-1/2 translate-x-1/2 translate-y-1/2 w-auto h-auto'>
-        <div className={`absolute z-10 top-5 right-5 w-auto h-auto ${!menu?"block":"hidden"}`}>
+        // <div className='absolute z-10 top-1/2 left-1/2 translate-x-1/2 translate-y-1/2 w-auto h-auto overlay_container'>
+        // <div className={`absolute z-10 top-5 right-5 w-auto h-auto ${!menu?"block":"hidden"} overlay_container`}>
+        <div className={`absolute z-10 top-5 right-5 w-auto h-auto overlay_container hidden`}>
             <div className='bg-[#2f3e46] text-white w-full max-w-70 h-auto min-h-40 rounded-2xl p-3 text-[13px]'>
                 <div className='w-full flex justify-between items-center py-3  '>
                     <p className='mx-au font-bold'>Control Panel</p>
-                    <div onClick={setMenu(false)} className='ml-auto w-7 h-7 cursor-pointer bg-white rounded-full flex justify-center items-center'>
+                    <div onClick={()=>setMenu(false)} className='ml-auto w-7 h-7 cursor-pointer bg-white rounded-full flex justify-center items-center'>
                         <img src="close.png" alt="" className='w-3 h-auto'/>
                     </div>
                 </div>
