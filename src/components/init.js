@@ -3,7 +3,7 @@ import gsap from "gsap";
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-export function initializer({canvas, which, intensity, pointLt, wireframe}){
+export function initializer({canvas, which, intensity, pointLt, wireframe, colorChanges}){
     const {innerWidth, innerHeight, requestAnimationFrame, addEventListener, devicePixelRatio} = window
     const aspectRatio = innerWidth/innerHeight
     const scene = new THREE.Scene()
@@ -73,6 +73,8 @@ export function initializer({canvas, which, intensity, pointLt, wireframe}){
     addEventListener("pointerdown", ()=> mousedown=true)
     addEventListener("pointerup", ()=> mousedown=false)
     addEventListener("pointermove", (e)=>{
+        if(!colorChanges) return
+        
         const moderator = ()=>{ 
             const halfway = 100*Math.random() + e.clientX*Math.random() + 100*Math.random()
             return halfway>255?255:halfway

@@ -10,11 +10,13 @@ interface Props {
     wireframe?:any,
     setMenu?:any,
     which:string,
-    menu?: boolean
+    menu?: boolean,
+    setColorChanges?: any,
+    colorChanges?: any
 }
 
 function Overlay(props: Props) {
-    const {changer, setIntensity, setPointLt, which, setWireframe, wireframe, setMenu, menu} = props
+    const {changer, setIntensity, setPointLt, which, setWireframe, wireframe, setMenu, menu, colorChanges, setColorChanges} = props
     const [values_1, setValues_1] = useState([10])
     const [values_2, setValues_2] = useState([100])
     const working = useRef(null)
@@ -60,9 +62,9 @@ function Overlay(props: Props) {
                     </div>
                 </div>
 
-                <p className='mb-2'>3D Objects</p>
+                <p className='mb-2 '>3D Objects</p>
 
-                <div className='bg-[#354f52] text-white rounded-xl py-4 px-1 flex flex-wrap justify-around items-start cursor-pointer'>
+                <div className='bg-[#354f52] text-white rounded-xl py-3 w-full px-1 flex flex-wrap justify-around items-start cursor-pointer'>
                     {
                         meshes.map((item, index)=>{
                             return (
@@ -75,16 +77,16 @@ function Overlay(props: Props) {
                     }
                 </div>
 
-                <p className='mt-5 mb-2 '>Environment Light ({values_1}%)</p>
-                <div className='bg-[#354f52] rounded-xl py-5 px-3 mb-5'>
+                <p className='mt-3 mb-2  '>Environment Light ({values_1}%)</p>
+                <div className='bg-[#354f52] rounded-full py-4 px-3 mb-3'>
                     <SelectRange 
                         values={values_1}
                         setValues={setValues_1}
                     />
                 </div>
 
-                <p className='mt-5 mb-2 '>Pointed Light ({values_2})</p>
-                <div className='bg-[#354f52] rounded-xl py-5 px-3 mb-2'>
+                <p className='mt-0 mb-2  '>Pointed Light ({values_2})</p>
+                <div className='bg-[#354f52] rounded-full py-4 px-3 mb-2'>
                     <SelectRange 
                         values={values_2}
                         setValues={setValues_2}
@@ -95,9 +97,16 @@ function Overlay(props: Props) {
 
 
                 <div onClick={()=>{setWireframe(!wireframe)}} className='flex justify-between items-center py-2'>
-                    <p>Enable Wireframe</p>
-                    <div className='w-6 h-6 bg-white rounded-md flex justify-center items-center'>
-                        <img src={"check.png"} alt="" className={`w-4 h-auto ${wireframe?"opacity-100":"opacity-0"}`}/>
+                    <p>Wireframe</p>
+                    <div className='w-4.5 h-4.5 bg-white rounded-md flex justify-center items-center'>
+                        <img src={"check.png"} alt="" className={`w-2.75 h-auto ${wireframe?"opacity-100":"opacity-0"}`}/>
+                    </div>
+                </div>
+
+                <div onClick={()=>{setColorChanges(!colorChanges)}} className='flex justify-between items-center py-2'>
+                    <p>Color Changes</p>
+                    <div className='w-4.5 h-4.5 bg-white rounded-md flex justify-center items-center'>
+                        <img src={"check.png"} alt="" className={`w-2.75 h-auto ${colorChanges?"opacity-100":"opacity-0"}`}/>
                     </div>
                 </div>
             </div>

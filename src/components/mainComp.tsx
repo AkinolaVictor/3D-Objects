@@ -11,14 +11,13 @@ function MainComp(props: Props) {
     const canvasElem = useRef(null)
     const working = useRef(null)
     const timeout = useRef(null)
-    // const [which, setWhich] = useState("Sphere")
-    // const [which, setWhich] = useState("Torus")
     const [which, setWhich] = useState("Torus")
     const [intensity, setIntensity] = useState(0.1)
     const [pointLt, setPointLt] = useState(100)
     const [reload, setReload] = useState(1)
     const [wireframe, setWireframe] = useState(false)
     const [menu, setMenu] = useState(false)
+    const [colorChanges, setColorChanges] = useState(true)
 
     function increase_light(){
         setIntensity((prev)=>{
@@ -54,11 +53,11 @@ function MainComp(props: Props) {
 
     useEffect(()=>{
         quick_reminder()
-    }, [intensity, pointLt, wireframe, intensity, which])
+    }, [intensity, pointLt, wireframe, intensity, which, colorChanges])
 
     useEffect(()=>{
-        return initializer({canvas: canvasElem.current, which, intensity, pointLt, wireframe})
-    }, [reload, intensity, pointLt, wireframe, intensity, which])
+        return initializer({canvas: canvasElem.current, which, intensity, pointLt, wireframe, colorChanges})
+    }, [reload, intensity, pointLt, wireframe, intensity, which, colorChanges])
     
     return (
         <div onClick={()=>{setMenu(false)}} className='w-screen h-screen text-white relative'>
@@ -73,20 +72,7 @@ function MainComp(props: Props) {
                 </div>
             </nav>
             <h1 className='absolute left-1/2 top-4/5 z-2 -translate-x-1/2 -translate-y-4/5 text-[20px]'>Give it a spin</h1>
-            {/* {
-                menu?
-                <Overlay 
-                    changer={switch_object} 
-                    setIntensity={setIntensity} 
-                    setPointLt={setPointLt}
-                    wireframe={wireframe}
-                    setWireframe={setWireframe}
-                    which={which}
-                    setMenu={setMenu}
-                    menu={menu}
-                />:
-                null
-            } */}
+            
             <Overlay 
                 changer={switch_object} 
                 setIntensity={setIntensity} 
@@ -96,6 +82,8 @@ function MainComp(props: Props) {
                 which={which}
                 setMenu={setMenu}
                 menu={menu}
+                colorChanges={colorChanges}
+                setColorChanges={setColorChanges}
             />
         </div>
     )

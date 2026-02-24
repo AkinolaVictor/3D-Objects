@@ -24,7 +24,7 @@ function SelectRange(props: Props) {
                     {...props}
                     style={{
                         ...props.style,
-                        height: "6px",
+                        height: "3px",
                         width: "100%",
                         backgroundColor: "#00b4d8",
                         borderRadius: "100px"
