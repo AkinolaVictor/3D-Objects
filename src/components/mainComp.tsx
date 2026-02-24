@@ -71,7 +71,7 @@ function MainComp(props: Props) {
                     <img src="menu.png" alt="" className='w-5.5 h-auto'/>
                 </div>
             </nav>
-            <h1 className='absolute left-1/2 top-4/5 z-2 -translate-x-1/2 -translate-y-4/5 text-[20px]'>Give it a spin</h1>
+            {/* <h1 className='absolute left-1/2 top-4/5 z-2 -translate-x-1/2 -translate-y-4/5 text-[20px]'>Give it a spin</h1> */}
             
             <Overlay 
                 changer={switch_object} 
