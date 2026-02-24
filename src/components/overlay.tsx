@@ -53,18 +53,18 @@ function Overlay(props: Props) {
     return (
         // <div className='absolute z-10 top-1/2 left-1/2 translate-x-1/2 translate-y-1/2 w-auto h-auto overlay_container'>
         // <div className={`absolute z-10 top-5 right-5 w-auto h-auto ${!menu?"block":"hidden"} overlay_container`}>
-        <div className={`absolute z-10 top-5 right-5 w-auto h-auto overlay_container hidden`}>
+        <div onClick={(e)=>{e.stopPropagation();}} className={`absolute z-10 top-5 right-5 w-auto h-auto overlay_container hidden`}>
             <div className='bg-[#2f3e46] text-white w-full max-w-70 h-auto min-h-40 rounded-2xl p-3 text-[13px]'>
                 <div className='w-full flex justify-between items-center py-3  '>
                     <p className='mx-au font-bold'>Control Panel</p>
                     <div onClick={()=>setMenu(false)} className='ml-auto w-7 h-7 cursor-pointer bg-white rounded-full flex justify-center items-center'>
-                        <img src="close.png" alt="" className='w-3 h-auto'/>
+                        <img src="close.png" alt="" className='w-2.5 h-auto'/>
                     </div>
                 </div>
 
                 <p className='mb-2'>3D Objects</p>
 
-                <div className='bg-[#354f52] text-white rounded-xl py-4 px-1 flex flex-wrap justify-around items-start'>
+                <div className='bg-[#354f52] text-white rounded-xl py-4 px-1 flex flex-wrap justify-around items-start cursor-pointer'>
                     {
                         meshes.map((item, index)=>{
                             return (

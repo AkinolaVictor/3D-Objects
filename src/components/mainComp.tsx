@@ -61,12 +61,12 @@ function MainComp(props: Props) {
     }, [reload, intensity, pointLt, wireframe, intensity, which])
     
     return (
-        <div className='w-screen h-screen text-white relative'>
+        <div onClick={()=>{setMenu(false)}} className='w-screen h-screen text-white relative'>
             <canvas ref={canvasElem} className="webgl absolute top-0 left-0 z-1"></canvas>
             <nav className='text-white z-2 relative px-4 py-5 flex justify-between'>
                 {/* <a onClick={increase_light} href="/" className='font-bold no-underline'>Spapes</a> */}
                 <p onClick={increase_light} className='font-bold no-underline'>3D Objects</p>
-                <div onClick={()=>{setMenu(true)}} className='flex text-black cursor-pointer justify-center items-center bg-white rounded-[100px] w-10 h-10'>
+                <div onClick={(e)=>{setMenu(true); e.stopPropagation()}} className='flex text-black cursor-pointer justify-center items-center bg-white rounded-[100px] w-10 h-10'>
                     {/* <li>Menu</li> */}
                     {/* <p>Cl</p> */}
                     <img src="menu.png" alt="" className='w-5.5 h-auto'/>
