@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { initializer } from './init'
 import { delayer } from '@/utils/exports'
 import Overlay from './overlay'
+import Head from 'next/head'
 // import * as Three from "three";
 
 interface Props {}
@@ -18,6 +19,7 @@ function MainComp(props: Props) {
     const [wireframe, setWireframe] = useState(false)
     const [menu, setMenu] = useState(false)
     const [colorChanges, setColorChanges] = useState(true)
+    const [zp, setZp] = useState(false)
 
     function increase_light(){
         setIntensity((prev)=>{
@@ -53,14 +55,20 @@ function MainComp(props: Props) {
 
     useEffect(()=>{
         quick_reminder()
-    }, [intensity, pointLt, wireframe, intensity, which, colorChanges])
+    }, [intensity, pointLt, wireframe, intensity, which, colorChanges, zp])
 
     useEffect(()=>{
-        return initializer({canvas: canvasElem.current, which, intensity, pointLt, wireframe, colorChanges})
-    }, [reload, intensity, pointLt, wireframe, intensity, which, colorChanges])
+        return initializer({canvas: canvasElem.current, which, intensity, pointLt, wireframe, colorChanges, zp})
+    }, [reload, intensity, pointLt, wireframe, intensity, which, colorChanges, zp])
     
     return (
         <div onClick={()=>{setMenu(false)}} className='w-screen h-screen text-white relative'>
+            <Head>
+                <title>3D Objects</title>
+                <meta name="description" content="A basic preview of 3d objects with simple controls" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <canvas ref={canvasElem} className="webgl absolute top-0 left-0 z-1"></canvas>
             <nav className='text-white z-2 relative px-4 py-5 flex justify-between'>
                 {/* <a onClick={increase_light} href="/" className='font-bold no-underline'>Spapes</a> */}
@@ -84,6 +92,8 @@ function MainComp(props: Props) {
                 menu={menu}
                 colorChanges={colorChanges}
                 setColorChanges={setColorChanges}
+                zp={zp}
+                setZp={setZp}
             />
         </div>
     )

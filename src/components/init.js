@@ -3,7 +3,7 @@ import gsap from "gsap";
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-export function initializer({canvas, which, intensity, pointLt, wireframe, colorChanges}){
+export function initializer({canvas, which, intensity, pointLt, wireframe, colorChanges, zp}){
     const {innerWidth, innerHeight, requestAnimationFrame, addEventListener, devicePixelRatio} = window
     const aspectRatio = innerWidth/innerHeight
     const scene = new THREE.Scene()
@@ -40,8 +40,8 @@ export function initializer({canvas, which, intensity, pointLt, wireframe, color
     controls.autoRotate = true
     controls.autoRotateSpeed = 3
     controls.enableDamping = true
-    controls.enablePan = false
-    controls.enableZoom = false
+    controls.enablePan = zp
+    controls.enableZoom = zp
     // controls.maxZoom = 2  // for orthographic camera
     // controls.minZoom = 0.5  // for orthographic camera
     // controls.minDistance = 5

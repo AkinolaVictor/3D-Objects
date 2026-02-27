@@ -13,10 +13,12 @@ interface Props {
     menu?: boolean,
     setColorChanges?: any,
     colorChanges?: any
+    setZp?: any,
+    zp?: any
 }
 
 function Overlay(props: Props) {
-    const {changer, setIntensity, setPointLt, which, setWireframe, wireframe, setMenu, menu, colorChanges, setColorChanges} = props
+    const {changer, setIntensity, setPointLt, which, setWireframe, wireframe, setMenu, menu, colorChanges, setColorChanges, setZp, zp} = props
     const [values_1, setValues_1] = useState([10])
     const [values_2, setValues_2] = useState([100])
     const working = useRef(null)
@@ -107,6 +109,13 @@ function Overlay(props: Props) {
                     <p>Color Changes</p>
                     <div className='w-4.5 h-4.5 bg-white rounded-md flex justify-center items-center'>
                         <img src={"check.png"} alt="" className={`w-2.75 h-auto ${colorChanges?"opacity-100":"opacity-0"}`}/>
+                    </div>
+                </div>
+
+                <div onClick={()=>{setZp(!zp)}} className='flex justify-between items-center py-2'>
+                    <p>Zoom and Pan</p>
+                    <div className='w-4.5 h-4.5 bg-white rounded-md flex justify-center items-center'>
+                        <img src={"check.png"} alt="" className={`w-2.75 h-auto ${zp?"opacity-100":"opacity-0"}`}/>
                     </div>
                 </div>
             </div>
